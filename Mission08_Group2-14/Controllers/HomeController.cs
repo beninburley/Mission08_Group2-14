@@ -76,6 +76,7 @@ public class HomeController : Controller
         return RedirectToAction("QuadrantView");
     }
 
+
     [HttpGet]
     public IActionResult Delete(int id)
     {
@@ -91,6 +92,8 @@ public class HomeController : Controller
         _context.SaveChanges();
 
         return RedirectToAction("QuadrantView");
+
+
     }
 
 }
