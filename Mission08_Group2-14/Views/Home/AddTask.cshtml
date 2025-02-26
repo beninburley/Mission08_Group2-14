@@ -1,0 +1,52 @@
+@model Tasks
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="mb-3">Add Tasks</h1>
+        <h3 class="mb-4">Use the form below to add a new task to the task manager:</h3>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Something" asp-controller="Home" method="post">
+                <input type="hidden" asp-for="TaskId" required/>
+                <!-- Task -->
+                <div class="mb-3">
+                    <label for="Task" class="form-label">Task</label>
+                    <input type="text" class="form-control" id="Task" name="Task" placeholder="Enter task title" required>
+                </div>
+
+                <!-- Due date -->
+                <div class="mb-3">
+                    <label for="DueDate" class="form-label">Due Date</label>
+                    <input type="date" class="form-control" id="DueDate" name="DueDate">
+                </div>
+
+                <!-- Quadrant -->
+                <div class="mb-3">
+                    <label asp-for="Quadrant" class="form-label">Quadrant</label>
+                    <input type="text" class="form-control" id="Quadrant" name="Quadrant" required>
+                </div>
+
+                <!-- Category (Dropdown) -->
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label">Category</label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"))" required>
+                        <option value="">Select a category</option>
+                    </select>
+                </div>
+
+                <!-- Completed Checkbox -->
+                <div class="form-check mb-3">
+                    <input asp-for="Completed" class="form-check-input" type="checkbox" value="true">
+                    <label asp-for="Completed" class="form-check-label">Completed?</label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
