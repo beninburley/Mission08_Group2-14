@@ -15,6 +15,6 @@ namespace Mission08_Group2_14.Models
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }
         public Categories? Category { get; set; }
-        public bool? Completed { get; set; }
+        public bool Completed { get; set; }
     }
 }
