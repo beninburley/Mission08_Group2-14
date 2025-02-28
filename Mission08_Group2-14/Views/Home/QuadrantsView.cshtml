@@ -1,11 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@{
-    Layout = null; // Assuming you don't want any layout for this page
-}
+﻿@model List<Tasks>
+<link rel="stylesheet" type="text/css" href="css/matrix-style.css">
 
 <!DOCTYPE html>
 <html>
@@ -15,8 +9,8 @@
 </head>
 <body>
     <div class="matrix">
-        <h1>Stephen Covey's Time Management Matrix</h1>
-        <table>
+        <h1>Time Management Matrix</h1>
+        <table >
             <thead>
                 <tr>
                     <th></th>
@@ -28,36 +22,62 @@
                 <tr>
                     <th>Important</th>
                     <td>
+                        <div class="quadrant-title">Quadrant 1</div>
                         <ul>
-                            <li>Crises</li>
-                            <li>Pressing Problems</li>
-                            <li>Projects with Deadlines</li>
+                            @foreach (var task in Model.Where(t => t.Quadrant == 1))
+                            {
+                                <li>
+                                    @task.TaskName
+                                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                                </li>
+                            }
                         </ul>
+
                     </td>
                     <td>
+                        <div class="quadrant-title">Quadrant 2</div>
                         <ul>
-                            <li>Relationship Building</li>
-                            <li>Planning</li>
-                            <li>Recreation</li>
+                            @foreach (var task in Model.Where(t => t.Quadrant == 2))
+                            {
+                                <li>
+                                    @task.TaskName
+                                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                                </li>
+                            }
                         </ul>
                     </td>
                 </tr>
                 <tr>
                     <th>Not Important</th>
                     <td>
+                        <div class="quadrant-title">Quadrant 3</div>
                         <ul>
-                            <li>Interruptions</li>
-                            <li>Some Phone Calls</li>
-                            <li>Some Mail</li>
-                            <li>Some Reports</li>
+                            @foreach (var task in Model.Where(t => t.Quadrant == 3)) 
+                            {
+                                <li>
+                                    @task.TaskName
+                                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+
+                                </li>
+                            }
                         </ul>
                     </td>
                     <td>
+                        <div class="quadrant-title">Quadrant 4</div>
                         <ul>
-                            <li>Busy Work</li>
-                            <li>Some Phone Calls</li>
-                            <li>Some Mail</li>
-                            <li>Time Wasters</li>
+                            @foreach (var task in Model.Where(t => t.Quadrant == 4))
+                            {
+                                <li>
+                                    @task.TaskName
+                                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                                    <br />
+                                    <br />
+                                </li>
+                            }
                         </ul>
                     </td>
                 </tr>

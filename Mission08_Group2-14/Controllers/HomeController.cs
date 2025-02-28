@@ -56,7 +56,7 @@ public class HomeController : Controller
 
     public IActionResult QuadrantsView()
     {
-        var tasks = _context.Tasks.Where(t => t.Completed == true).ToList();
+        var tasks = _context.Tasks.Where(t => t.Completed == false).ToList();
 
         return View(tasks);
     }

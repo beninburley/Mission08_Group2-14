@@ -20,3 +20,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+.quadrant-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.matrix {
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the div on the page */
+    text-align: center; /* Optional: centers text within the div */
+}
+
+table {
+    width: 100%; /* Makes the table use full width of the .matrix div */
+    border-collapse: collapse; /* Optional: neatens borders */
+}
+
+th, td {
+    text-align: center; /* Centers text in table headers and cells */
+    padding: 8px; /* Adds space around text in cells */
+}
