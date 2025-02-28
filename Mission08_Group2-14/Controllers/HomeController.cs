@@ -26,12 +26,17 @@ public class HomeController : Controller
     {
         ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
 
-        return View("AddTask", new Task());
+        var task = new Tasks
+        {
+            Completed = false // Set default value to false
+        };
+
+        return View("AddTask", task);
 
     }
 
     [HttpPost]
-    public IActionResult AddTask(Task response)
+    public IActionResult AddTask(Tasks response)
     {
         ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
 
@@ -40,7 +45,7 @@ public class HomeController : Controller
             _context.Tasks.Add(response); //Add record to the DB
             _context.SaveChanges(); //Save changes to the DB
 
-            return View("AddTask");
+            return RedirectToAction("QuadrantView");
         }
         else
         {
@@ -49,10 +54,9 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult QuadrantView()
+    public IActionResult QuadrantsView()
     {
-        var tasks = _context.Tasks.Include(m => m.Category)
-            .Where(t => t.Completed).ToList();
+        var tasks = _context.Tasks.Where(t => t.Completed == true).ToList();
 
         return View(tasks);
     }
@@ -68,7 +72,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(Task updatedInfo)
+    public IActionResult Edit(Tasks updatedInfo)
     {
         _context.Update(updatedInfo);
         _context.SaveChanges();
@@ -86,7 +90,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Delete(Task specTask)
+    public IActionResult Delete(Tasks specTask)
     {
         _context.Tasks.Remove(specTask);
         _context.SaveChanges();
