@@ -8,7 +8,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form asp-action="AddTask" asp-controller="Home" method="post">
+            <form method="post">
                 <input type="hidden" asp-for="TaskId" required/>
                 <!-- Task -->
                 <div class="mb-3">
@@ -38,19 +38,10 @@
 
                 <!-- Completed Checkbox -->
                 <div class="form-check mb-3">
-                    <input type="hidden" asp-for="Completed" value="false" />
-
-                    @if (Model.Completed == true)
-                    {
-                        <input asp-for="Completed" class="form-check-input" type="checkbox" value="true" checked />
-                    }
-                    else
-                    {
-                        <input asp-for="Completed" class="form-check-input" type="checkbox" value="true" />
-                    }
-
+                    <input type="checkbox" asp-for="Completed" class="form-check-input">
                     <label asp-for="Completed" class="form-check-label">Completed?</label>
                 </div>
+
 
 
 
