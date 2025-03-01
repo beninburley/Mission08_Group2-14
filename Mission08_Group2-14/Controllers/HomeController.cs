@@ -45,7 +45,7 @@ public class HomeController : Controller
             _context.Tasks.Add(response); //Add record to the DB
             _context.SaveChanges(); //Save changes to the DB
 
-            return RedirectToAction("QuadrantView");
+            return RedirectToAction("QuadrantsView");
         }
         else
         {
@@ -77,7 +77,7 @@ public class HomeController : Controller
         _context.Update(updatedInfo);
         _context.SaveChanges();
 
-        return RedirectToAction("QuadrantView");
+        return RedirectToAction("QuadrantsView");
     }
 
 
@@ -95,7 +95,7 @@ public class HomeController : Controller
         _context.Tasks.Remove(specTask);
         _context.SaveChanges();
 
-        return RedirectToAction("QuadrantView");
+        return RedirectToAction("QuadrantsView");
 
 
     }
