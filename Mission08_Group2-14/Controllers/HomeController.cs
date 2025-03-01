@@ -64,7 +64,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var recordToEdit = _context.Tasks.Single(x => x.TaskId == id);
+        var recordToEdit = _context.Tasks.SingleOrDefault(x => x.TaskId == id);
 
         ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
 
@@ -84,7 +84,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var recordToDelete = _context.Tasks.Single(x => x.TaskId == id);
+        var recordToDelete = _context.Tasks.SingleOrDefault(x => x.TaskId == id);
 
         return View(recordToDelete);
     }
